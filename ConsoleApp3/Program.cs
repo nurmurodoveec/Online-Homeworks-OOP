@@ -4,59 +4,54 @@
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Add: " + Calculator.Add(5, 3));
-            Console.WriteLine("Subtract: " + Calculator.Subtract(8, 4));
-            Console.WriteLine("Multiply: " + Calculator.Multiply(2.5, 4));
-            Console.WriteLine("Divide: " + Calculator.Divide(10, 2));
-            Console.WriteLine("AbsoluteValue: " + Calculator.AbsoluteValue(-7));
-            Console.WriteLine("Power: " + Calculator.Pow(4));
+           Duck duck = new Duck();
+            duck.Quack();
+            duck.Swim();
+            duck.Display();
+            
+            MallardDuck mallardDuck = new MallardDuck();
+            mallardDuck.Quack();
+            mallardDuck.Swim();
+            mallardDuck.Display();
+
+            ReadheadDuck readheadDuck = new ReadheadDuck();
+            readheadDuck.Quack();
+            readheadDuck.Swim();
+            readheadDuck.Display();
+
 
         }
     }
 }
 
-class Calculator
+class Duck
 {
- 
-    public static dynamic Add(dynamic a, dynamic b)
+ public void Quack()
     {
-        return a + b;
+        Console.WriteLine("Duck is quacking...");
     }
-
-    public static dynamic Subtract(dynamic a, dynamic b)
+    public void Swim()
     {
-        return a - b;
+        Console.WriteLine("Duck is starts swimming...");
     }
-
-    public static dynamic Multiply(dynamic a, dynamic b)
-    {
-        return a * b;
+    public virtual void Display() {
+        Console.WriteLine("Other duck like- methods...");
     }
-
-
-    public static dynamic Divide(dynamic a, dynamic b)
+}
+class MallardDuck:Duck
+{
+    public override void Display()
     {
-        if (b != 0)
-        {
-            return a / b;
-        }
-        else
-        {
-            Console.WriteLine("Nolga bo'lib bo'lmaydi!");
-            return null;
-        }
+       
+        Console.WriteLine("Looks like mallard");
     }
-
-
-    public static dynamic AbsoluteValue(dynamic a)
+}
+class ReadheadDuck:Duck
+{
+    public override void Display()
     {
-        return Math.Abs(a);
-    }
-
-
-    public static dynamic Pow(dynamic a)
-    {
-        return Math.Pow(a, 2);
+   
+        Console.WriteLine("Looks like a readhead...");
     }
 }
 
