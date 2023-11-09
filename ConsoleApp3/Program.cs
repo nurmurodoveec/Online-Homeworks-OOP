@@ -1,60 +1,56 @@
-﻿namespace ConsoleApp3
+﻿using System.Runtime.InteropServices.Marshalling;
+
+namespace ConsoleApp3
 {
     internal class Program
     {
         static void Main(string[] args)
         {
-           Duck duck = new Duck();
-            duck.Quack();
-            duck.Swim();
-            duck.Display();
-            
-            MallardDuck mallardDuck = new MallardDuck();
-            mallardDuck.Quack();
-            mallardDuck.Swim();
-            mallardDuck.Display();
+            Dog animal= new Dog();
+            animal.Sound();
+            Cat cat = new Cat();
+            cat.Sound();
+            Duck duck = new Duck();
+            duck.Sound();
 
-            ReadheadDuck readheadDuck = new ReadheadDuck();
-            readheadDuck.Quack();
-            readheadDuck.Swim();
-            readheadDuck.Display();
+         
 
 
         }
     }
 }
 
-class Duck
+class Animal
 {
- public void Quack()
+    public virtual void Sound()
     {
-        Console.WriteLine("Duck is quacking...");
-    }
-    public void Swim()
-    {
-        Console.WriteLine("Duck is starts swimming...");
-    }
-    public virtual void Display() {
-        Console.WriteLine("Other duck like- methods...");
+        Console.Write($"This animals sound:  ");
     }
 }
-class MallardDuck:Duck
+class Dog:Animal
 {
-    public override void Display()
+    public override void Sound()
     {
-       
-        Console.WriteLine("Looks like mallard");
+        base.Sound();
+        Console.WriteLine("Bow Bow ");
     }
 }
-class ReadheadDuck:Duck
+class Cat:Animal
 {
-    public override void Display()
+    public override void Sound()
     {
-   
-        Console.WriteLine("Looks like a readhead...");
+        base.Sound();
+        Console.WriteLine("Meow Meow");
     }
 }
-
+class Duck:Animal
+{
+    public override void Sound()
+    {
+        base.Sound();
+        Console.WriteLine("quack quack");
+    }
+}
 
 
 
