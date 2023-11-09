@@ -4,38 +4,62 @@
     {
         static void Main(string[] args)
         {
-            AddNumbers calculator = new AddNumbers();
-
-            int result1 = calculator.Add(2, 3);
-            Console.WriteLine("Firs Result: "+result1);
-            double result2= calculator.Add(2, 4.5);
-            Console.WriteLine("Second Result: "+result2);
-            double result3 = calculator.Add(2.5, 4.5,6.5);
-            Console.WriteLine("Third Result: " + result3);
-            string result4= calculator.Add("Hello ","World!");
-            Console.WriteLine("Fourth result: " + result4);
-            string result5 = calculator.Add(4, " apples");
-            Console.WriteLine("Natija 5: " + result5);
+            Console.WriteLine("Add: " + Calculator.Add(5, 3));
+            Console.WriteLine("Subtract: " + Calculator.Subtract(8, 4));
+            Console.WriteLine("Multiply: " + Calculator.Multiply(2.5, 4));
+            Console.WriteLine("Divide: " + Calculator.Divide(10, 2));
+            Console.WriteLine("AbsoluteValue: " + Calculator.AbsoluteValue(-7));
+            Console.WriteLine("Power: " + Calculator.Pow(4));
 
         }
     }
 }
 
-class AddNumbers
+class Calculator
 {
-    public int Add(int a , int b)
-    { return a + b; }
-    public double Add(int a, double b)
-    { return a + b; }
-    public double Add(double a, double b,double c)
+ 
+    public static dynamic Add(dynamic a, dynamic b)
     {
-        return a + b + c;
+        return a + b;
     }
-    public string Add (string a, string b)
-    { return a + b; }
-    public string Add (int a, string b)
-    { return a + b; }
+
+    public static dynamic Subtract(dynamic a, dynamic b)
+    {
+        return a - b;
+    }
+
+    public static dynamic Multiply(dynamic a, dynamic b)
+    {
+        return a * b;
+    }
 
 
+    public static dynamic Divide(dynamic a, dynamic b)
+    {
+        if (b != 0)
+        {
+            return a / b;
+        }
+        else
+        {
+            Console.WriteLine("Nolga bo'lib bo'lmaydi!");
+            return null;
+        }
+    }
 
+
+    public static dynamic AbsoluteValue(dynamic a)
+    {
+        return Math.Abs(a);
+    }
+
+
+    public static dynamic Pow(dynamic a)
+    {
+        return Math.Pow(a, 2);
+    }
 }
+
+
+
+
