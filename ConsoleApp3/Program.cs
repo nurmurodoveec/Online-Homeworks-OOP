@@ -6,51 +6,101 @@ namespace ConsoleApp3
     {
         static void Main(string[] args)
         {
-            Dog animal= new Dog();
-            animal.Sound();
-            Cat cat = new Cat();
-            cat.Sound();
-            Duck duck = new Duck();
-            duck.Sound();
+            Circle circle = new Circle(radius: 5);
+            Console.WriteLine("Circle Area: " + circle.Area());
+            Console.WriteLine("Circle Perimeter: " + circle.Perimeter());
 
-         
+            Triangle triangle = new Triangle(sideA: 3, sideB: 4, hypotenuse: 5);
+            Console.WriteLine("Triangle Area: " + triangle.Area());
+            Console.WriteLine("Triangle Perimeter: " + triangle.Perimeter());
 
-
+            Rectangle rectangle = new Rectangle(sideA: 4, sideB: 6);
+            Console.WriteLine("Rectangle Area: " + rectangle.Area());
+            Console.WriteLine("Rectangle Perimeter: " + rectangle.Perimeter());
         }
     }
 }
 
-class Animal
+class Figure
 {
-    public virtual void Sound()
+    public virtual double Area()
     {
-        Console.Write($"This animals sound:  ");
+        return 0;
+    }
+
+    public virtual double Perimeter()
+    {
+        return 0;
     }
 }
-class Dog:Animal
+
+class Circle : Figure
 {
-    public override void Sound()
+    public double Radius { get; set; }
+
+    public Circle(double radius)
     {
-        base.Sound();
-        Console.WriteLine("Bow Bow ");
+        Radius = radius;
+    }
+
+    public override double Area()
+    {
+        return Math.PI * Math.Pow(Radius, 2);
+    }
+
+    public override double Perimeter()
+    {
+        return 2 * Math.PI * Radius;
     }
 }
-class Cat:Animal
+
+class Triangle : Figure
 {
-    public override void Sound()
+    public double SideA { get; set; }
+    public double SideB { get; set; }
+    public double Hypotenuse { get; set; }
+
+    public Triangle(double sideA, double sideB, double hypotenuse)
     {
-        base.Sound();
-        Console.WriteLine("Meow Meow");
+        SideA = sideA;
+        SideB = sideB;
+        Hypotenuse = hypotenuse;
+    }
+
+    public override double Area()
+    {
+        double s = (SideA + SideB + Hypotenuse) / 2;
+        return Math.Sqrt(s * (s - SideA) * (s - SideB) * (s - Hypotenuse));
+    }
+
+    public override double Perimeter()
+    {
+        return SideA + SideB + Hypotenuse;
     }
 }
-class Duck:Animal
+
+class Rectangle : Figure
 {
-    public override void Sound()
+    public double SideA { get; set; }
+    public double SideB { get; set; }
+
+    public Rectangle(double sideA, double sideB)
     {
-        base.Sound();
-        Console.WriteLine("quack quack");
+        SideA = sideA;
+        SideB = sideB;
+    }
+
+    public override double Area()
+    {
+        return SideA * SideB;
+    }
+
+    public override double Perimeter()
+    {
+        return 2 * (SideA + SideB);
     }
 }
+
 
 
 
